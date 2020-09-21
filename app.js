@@ -9,14 +9,14 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.get('/', function (request, response) {
-    /*let responseUrl = ''
+    let responseUrl = ''
     shorten.shorten('http://google.com').then((res) => {
         console.log(res);
         responseUrl = res
     }).catch((err) => {
         console.log(err);
     });
-    request.send(responseUrl);*/
+    request.send(responseUrl);
 });
 
 app.post('/', async function(request, response){
