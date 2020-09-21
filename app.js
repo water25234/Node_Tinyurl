@@ -9,14 +9,14 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.get('/', function (request, response) {
-    let responseUrl = ''
+    /*let responseUrl = ''
     shorten.shorten('http://google.com').then((res) => {
         console.log(res);
         responseUrl = res
     }).catch((err) => {
         console.log(err);
     });
-    request.send(responseUrl);
+    request.send(responseUrl);*/
 });
 
 app.post('/', async function(request, response){
@@ -34,3 +34,23 @@ app.listen(3000, function () {
   console.log('Example app listening on port 3000!');
 });
 
+app.get('/', function(request, response) {
+    const crypto = require('crypto-js');
+    const jwt = require('jsonwebtoken');
+
+
+    const data = { 
+        "id":"oooooxxxxx",
+    };
+
+    const key = crypto.SHA256(data.id).toString(crypto.enc.Hex);
+    console.log(key)
+
+    const payload = {
+        key: key,
+        name: "justin"
+      };
+  
+    const token = jwt.sign(payload, 'qwaszxerdfcvtyghbnuijkmolp');
+    console.log(token)
+});
